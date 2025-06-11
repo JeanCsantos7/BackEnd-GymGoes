@@ -6,11 +6,15 @@ dotenv.config()
 
 const baseDados = mysql.createPool({
 
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "Sccp1910",
-    database: "bd_gymgoes",
+    host: process.env.MYSQLHOST,
+    port: parseInt(process.env.MYSQLPORT || "5000"),
+    user: process.env.MYSQLUSER,
+    password: process.env.MYSQLPASSWORD,
+    database: process.env.MYSQLDATABASE,
+    connectTimeout: 50000,
+ waitForConnections: true,
+ connectionLimit: 20,
+ queueLimit: 0,
   
 }
 
